@@ -27,21 +27,21 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: alx-dashboard/package-lock.json
+          cache-dependency-path: ./package-lock.json
 
       - name: Install dependencies
-        working-directory: alx-dashboard
+        working-directory: .
         run: npm ci
 
       - name: Build
-        working-directory: alx-dashboard
+        working-directory: .
         run: npm run build
         # dist/ bedzie w alx-dashboard/dist/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: alx-dashboard/dist
+          path: ./dist
 
   deploy:
     needs: build
